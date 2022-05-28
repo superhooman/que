@@ -1,0 +1,47 @@
+:root {
+  --a-ease: ease;
+  --a-slide: cubic-bezier(0.16, 1, 0.3, 1);
+  --a-time-xs: .2s;
+  --a-time-sm: .4s;
+  --a-time-md: .6s;
+  --a-time-lg: .8s;
+  --a-time-xl: 1.2s;
+  --a-scale-factor: 0.95;
+  --a-rotate: rotate;
+  --a-fade-in: fadeIn;
+  --a-fade-in-up: fadeInUp;
+
+  --a-slide-up: slideUpAndFade;
+  --a-slide-right: slideRightAndFade;
+  --a-slide-down: slideDownAndFade;
+  --a-slide-left: slideLeftAndFade;
+}
+
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(359deg);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(48px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}

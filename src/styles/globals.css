@@ -1,0 +1,13 @@
+@import url('../constants/index.css');
+
+body {
+  font-family: var(--text-font-family);
+  font-size: var(--text-s-md);
+  line-height: var(--text-line-height);
+  color: var(--c-grey1);
+}
+
+*::selection {
+  background-color: var(--c-grey1);
+  color: var(--c-white);
+}

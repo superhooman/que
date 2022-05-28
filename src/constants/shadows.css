@@ -1,0 +1,5 @@
+:root {
+  --shadow-focus: 0 0 0 3px var(--c-active);
+  --shadow-sm: 0 4px 8px var(--c-active);
+  --shadow-md: 0 6px 16px var(--c-active);
+}
