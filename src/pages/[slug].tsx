@@ -14,8 +14,8 @@ interface Props {
     page: PageWithUser;
 }
 
-const UserPage: NextPage<Props> = ({ page }) => {
-    if (!page) {
+const UserPage: NextPage<Props> = (props) => {
+    if (!props.page) {
         return (
             <PageLayout>
                 <Loader />
@@ -23,7 +23,7 @@ const UserPage: NextPage<Props> = ({ page }) => {
         );
     }
 
-    const { user, blocks } = page;
+    const { user, blocks } = props.page;
 
     return (
         <PageLayout>
