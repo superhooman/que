@@ -3,6 +3,7 @@ import clsx from 'clsx';
 import { Loader } from '../Loader';
 
 import cls from './Button.module.scss';
+import { SocialIcon } from '../SocialIcon';
 
 interface Props extends HTMLAttributes<HTMLButtonElement> {
   variant?: 'default' | 'primary' | 'ghost';
@@ -26,7 +27,15 @@ export const Button = React.forwardRef<HTMLButtonElement, Props>(
       type={type}
       {...props}
     >
-      {icon ? <span className={cls.icon}>{icon}</span> : null}
+      {icon ? (
+        <span className={cls.icon}>
+          {typeof icon === 'string' ? (
+            <SocialIcon icon={icon} />
+          ) : (
+            icon
+          )}
+        </span>
+      ) : null}
       <span>{children}</span>
       {loading ? (
         <div className={cls.loading}>

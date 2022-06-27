@@ -1,6 +1,7 @@
+import { Link2Icon } from '@radix-ui/react-icons';
 import { useFormik } from 'formik';
 import { useTranslation } from 'next-i18next';
-import React from 'react';
+import React, { ReactNode } from 'react';
 import { z } from 'zod';
 import { BlockProps, EditBlockProps } from '..';
 import { Button } from '../../components/Button';
@@ -27,6 +28,32 @@ export const linkSchema = z.object({
     url: z.string().url(),
 });
 
+const iconMap = [
+    ['tiktok.com/', 'tiktok'],
+    ['twitter.com/', 'twitter'],
+    ['instagram.com/', 'instagram'],
+    ['youtube.com/', 'youtube'],
+    ['youtu.be/', 'youtube'],
+    ['vk.com/', 'vk'],
+    ['discord.com/', 'discord'],
+    ['github.com/', 'github'],
+    ['facebook.com/', 'facebook'],
+    ['fb.com/', 'fb'],
+    ['wa.me/', 'whatsapp'],
+    ['whatsapp.com', 'whatsapp'],
+    ['twitch.com/', 'twitch'],
+    ['t.me/', 'telegram']
+];
+
+const getIconFromUrl = (url: string, fallback?: ReactNode) => {
+    for (let [start, icon] of iconMap) {
+        if (url.includes(start)) {
+            return icon;
+        }
+    }
+    return fallback;
+};
+
 export const LinkBlockEditor: React.FC<EditBlockProps<LinkBlockData>> = ({ id, initialData, onSave, onCancel }) => {
     const { t } = useTranslation('common');
     const { t: errorsT } = useTranslation('errors');
@@ -35,7 +62,7 @@ export const LinkBlockEditor: React.FC<EditBlockProps<LinkBlockData>> = ({ id, i
         onSave(id, data);
     }, [id, onSave]);
 
-    const { getFieldProps, touched, errors, handleSubmit } = useFormik<LinkBlockData>({
+    const { getFieldProps, touched, errors, handleSubmit, values } = useFormik<LinkBlockData>({
         initialValues: initialData,
         onSubmit,
         validationSchema: zodToFormik(linkSchema),
@@ -53,6 +80,7 @@ export const LinkBlockEditor: React.FC<EditBlockProps<LinkBlockData>> = ({ id, i
                 />
                 <Input
                     label={t('url')}
+                    icon={getIconFromUrl(values.url, <Link2Icon />)}
                     error={touched.url && errors.url && errorsT(errors.url)}
                     {...getFieldProps('url')}
                 />
@@ -68,7 +96,7 @@ export const LinkBlockEditor: React.FC<EditBlockProps<LinkBlockData>> = ({ id, i
 export const LinkBlock: React.FC<BlockProps<LinkBlockData>> = ({ data }) => (
     <div className={cls.root}>
         <a href={data.url} target="_blank" rel="noreferrer">
-            <Button size="large" fullWidth variant="primary">{data.text}</Button>
+            <Button icon={getIconFromUrl(data.url)} size="large" fullWidth>{data.text}</Button>
         </a>
     </div>
 );

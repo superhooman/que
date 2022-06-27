@@ -1,4 +1,5 @@
 import React, { HTMLAttributes, ReactNode, useId } from 'react';
+import { SocialIcon } from '../SocialIcon';
 import cls from './Input.module.scss';
 
 interface Props extends HTMLAttributes<HTMLInputElement> {
@@ -25,7 +26,15 @@ export const Input = React.forwardRef<HTMLInputElement, Props>(
         <div className={cls.root} data-error={error}>
           {left ? <div className={cls.right}>{left}</div> : null}
           {suffix ? <div className={cls.suffix}>{suffix}</div> : null}
-          {icon ? <div className={cls.icon}>{icon}</div> : null}
+          {icon ? (
+            <div className={cls.icon}>
+              {typeof icon === 'string' ? (
+                <SocialIcon icon={icon} />
+              ) : (
+                icon
+              )}
+            </div>
+          ) : null}
           <input
             {...props}
             id={htmlId}

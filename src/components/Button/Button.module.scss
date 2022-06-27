@@ -26,8 +26,8 @@
   }
 
   &[data-size="large"] {
-    height: 36px;
-    line-height: 36px;
+    height: 44px;
+    line-height: 44px;
     padding: 0 16px;
     font-size: var(--text-s-md);
   }
@@ -79,19 +79,27 @@
   &.fullWidth {
     width: 100%;
   }
+
+  &[data-type="primary"] .icon img {
+    filter: invert(1);
+  }
 }
 
 .icon {
   display: inline-block;
   vertical-align: middle;
   margin-bottom: 4px;
+  height: 15px;
+  width: 15px;
+
+  img, svg {
+    display: block;
+    width: 100%;
+    height: 100%;
+  }
 
   & + span:not(:empty) {
     margin-left: 8px;
-  }
-
-  svg {
-    display: block;
   }
 }
 
