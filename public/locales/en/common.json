@@ -10,5 +10,7 @@
     "optional": "Optional",
     "url": "URL",
     "b.text": "Text Block",
-    "b.link": "Link Block"
+    "b.link": "Link Block",
+    "empty": "Empty",
+    "addBlock": "Add a block to get started"
 }

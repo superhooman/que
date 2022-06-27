@@ -50,7 +50,7 @@ const Home: NextPage<Props> = ({ page }) => {
       </Head>
       <Stack justifyContent="space-between">
         <Link href={`https://${HOST}/${page.slug}`}>
-          <a>
+          <a target="_blank">
           <Title level={1}>
             <Text size="lg" type="secondary">{HOST}/</Text>
             <Text size="lg">{page.slug}</Text>

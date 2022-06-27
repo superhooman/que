@@ -2,6 +2,7 @@ import type { AppProps } from 'next/app';
 import type { Session } from 'next-auth';
 import { SessionProvider } from 'next-auth/react';
 import { appWithTranslation } from 'next-i18next';
+import NextProgress from 'next-progress';
 
 import '../styles/reset.css';
 import '../styles/globals.scss';
@@ -24,6 +25,7 @@ const App = ({ Component, pageProps }: AppProps) => {
         <meta name="theme-color" content="#ffffff" />
       </Head>
       <Component {...pageProps} />
+      <NextProgress delay={300} options={{ showSpinner: false }} />
     </SessionProvider>
   );
 };

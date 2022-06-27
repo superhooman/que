@@ -33,10 +33,10 @@ const Create: NextPage = () => {
         onSubmit,
         validationSchema: zodToFormik(createPageSchema),
         validateOnChange: true,
-        validateOnBlur: true,
+        validateOnBlur: false,
     });
 
-    const hasError = Boolean(touched.slug && errors.slug);
+    const hasError = Boolean(errors.slug);
 
     const enabled = !hasError && !!slug;
 
@@ -59,7 +59,7 @@ const Create: NextPage = () => {
                 <title>Create a page</title>
             </Head>
             <Title>{t('title')}</Title>
-            <form onSubmit={handleSubmit}>
+            <form onSubmit={handleSubmit} autoCapitalize="off" autoCorrect="off" autoComplete="off">
                 <Stack gap={8} direction="column">
                     <Input
                         label={t('slug')}
@@ -71,7 +71,7 @@ const Create: NextPage = () => {
                                 loading={hasError ? false : isLoading}
                             />
                         ) : null}
-                        error={touched.slug && errors.slug && errorsT(errors.slug)}
+                        error={errors.slug && errorsT(errors.slug)}
                         {...getFieldProps('slug')}
                     />
                     <Button

@@ -17,6 +17,18 @@ body {
   min-height: 100%;
 }
 
+body.dragging, body.dragging * {
+  cursor: grabbing;
+}
+
+#nprogress .bar {
+  background-color: var(--c-grey1)!important;
+}
+
+#nprogress .peg {
+  display: none!important;
+}
+
 #__next {
   flex: 1 1 auto;
 }

@@ -18,6 +18,7 @@ import {
     verticalListSortingStrategy,
 } from '@dnd-kit/sortable';
 import {
+    restrictToParentElement,
     restrictToVerticalAxis,
 } from '@dnd-kit/modifiers';
 import { blockAdapter, BlockEditor as Editor } from '../../blocks';
@@ -27,6 +28,8 @@ import { Stack } from '../../components/Stack';
 import { useTranslation } from 'next-i18next';
 import { Space } from '../../components/Space';
 import { Link1Icon, TextIcon } from '@radix-ui/react-icons';
+import { ModalTitle } from '../../components/Modal';
+import { Empty } from './components/Empty';
 
 const Modal = dynamic(() => import('../../components/Modal/Modal'), { ssr: false });
 const BlockItem = dynamic(() => import('./components/BlockItem'), { ssr: false });
@@ -75,7 +78,7 @@ export const BlockEditor: React.FC<Props> = (props) => {
 
     const addBlock = React.useCallback((type: Block['type']) => {
         setBlocks(v => {
-            const id = uuidv4() + v.length;
+            const id = uuidv4() + Object.keys(v).length;
             setOrder(v => [...v, id]);
             openModal(id, true);
             const block = {
@@ -145,13 +148,16 @@ export const BlockEditor: React.FC<Props> = (props) => {
             return null;
         }
         return (
-            <Editor
-                block={block}
-                onSave={updateBlock}
-                onCancel={onCancel}
-            />
+            <>
+                <ModalTitle>{t(`b.${block.type}`)}</ModalTitle>
+                <Editor
+                    block={block}
+                    onSave={updateBlock}
+                    onCancel={onCancel}
+                />
+            </>
         );
-    }, [blocks, onCancel, updateBlock]);
+    }, [blocks, onCancel, updateBlock, t]);
 
     // TODO 
     const addBlockText = React.useCallback(() => addBlock('text'), [addBlock]);
@@ -163,21 +169,23 @@ export const BlockEditor: React.FC<Props> = (props) => {
                 sensors={sensors}
                 collisionDetection={closestCenter}
                 onDragEnd={handleDragEnd}
-                modifiers={[restrictToVerticalAxis]}
+                modifiers={[restrictToVerticalAxis, restrictToParentElement]}
             >
                 <SortableContext
-                    items={items}
+                    items={order}
                     strategy={verticalListSortingStrategy}
                 >
                     <Stack direction="column" gap={8}>
-                        {items.map((block) => (
+                        {items.length ? items.map((block) => (
                             <BlockItem
                                 key={block.id}
                                 block={block}
                                 onEdit={openModal}
                                 onRemove={removeBlock}
                             />
-                        ))}
+                        )) : (
+                            <Empty />
+                        )}
                     </Stack>
                 </SortableContext>
             </DndContext>
@@ -188,6 +196,7 @@ export const BlockEditor: React.FC<Props> = (props) => {
             </Stack>
             <Modal
                 open={modal}
+                maxWidth="md"
             >
                 {selected ? renderEditor(selected) : null}
             </Modal>

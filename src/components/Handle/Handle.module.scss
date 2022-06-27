@@ -7,9 +7,11 @@
     .handle {
         cursor: grab;
         touch-action: manipulation;
+        margin: 0 -8px;
+        padding: 0 8px;
 
-        &:active {
-            cursor: grabbing;
+        svg {
+            display: block;
         }
     }
 }

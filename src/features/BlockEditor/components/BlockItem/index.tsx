@@ -1,6 +1,7 @@
 import { useSortable } from '@dnd-kit/sortable';
 import { CSS } from '@dnd-kit/utilities';
 import { DotsVerticalIcon, Pencil2Icon, TrashIcon } from '@radix-ui/react-icons';
+import clsx from 'clsx';
 import { useTranslation } from 'next-i18next';
 import React from 'react';
 import { BlockRenderer } from '../../../../blocks';
@@ -9,7 +10,10 @@ import { Card } from '../../../../components/Card';
 import { Handle } from '../../../../components/Handle';
 import { Menu, MenuItemWithIcon } from '../../../../components/Menu';
 import { Text } from '../../../../components/Typography';
+import { useDraggableCursor } from '../../../../hooks/useDraggableCursor';
 import { Block } from '../../../../typings/page';
+
+import cls from './BlockItem.module.scss';
 
 interface Props {
     block: Block;
@@ -23,11 +27,20 @@ export const BlockItem: React.FC<Props> = ({ block, onEdit, onRemove }) => {
     const {
         attributes,
         listeners,
-        setNodeRef,
         transform,
         transition,
         isDragging,
-    } = useSortable({ id });
+        setNodeRef,
+        setActivatorNodeRef,
+    } = useSortable({
+        id,
+        transition: {
+            duration: 150,
+            easing: 'cubic-bezier(0.25, 1, 0.5, 1)',
+        }
+    });
+
+    useDraggableCursor(isDragging);
 
     const style = React.useMemo(() => ({
         transform: CSS.Transform.toString(transform ? {
@@ -35,11 +48,7 @@ export const BlockItem: React.FC<Props> = ({ block, onEdit, onRemove }) => {
             scaleY: 1,
         } : null),
         transition,
-        ...(isDragging ? {
-            zIndex: 1,
-            boxShadow: 'var(--shadow-sm), var(--shadow-md), var(--shadow-border)',
-        } : {})
-    }), [transform, transition, isDragging]);
+    }), [transform, transition]);
 
     const edit = React.useCallback(() => onEdit(id), [onEdit, id]);
     const remove = React.useCallback(() => onRemove(id), [onRemove, id]);
@@ -50,6 +59,7 @@ export const BlockItem: React.FC<Props> = ({ block, onEdit, onRemove }) => {
                 <Handle
                     {...listeners}
                     {...attributes}
+                    ref={setActivatorNodeRef}
                 />
             }
             menu={(
@@ -77,6 +87,7 @@ export const BlockItem: React.FC<Props> = ({ block, onEdit, onRemove }) => {
                 </Menu>
             )}
             ref={setNodeRef}
+            className={clsx(cls.root, { [cls.isDragging]: isDragging })}
             style={style}
         >
             <Text type="secondary" size="xs">{t(`b.${block.type}`)}</Text>
