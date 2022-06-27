@@ -37,4 +37,6 @@ EXPOSE 3000
 
 ENV PORT 3000
 
-ENTRYPOINT [ "./start.sh" ]
+RUN npm run migrate
+
+CMD ["npm", "run", "prod"]
