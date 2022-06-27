@@ -1,0 +1,6 @@
+{
+    "EmailType": "Enter a valid email",
+    "Required": "This field is required",
+    "Slug": "Page slug can only contain latin letters, numbers, '.', and '_'",
+    "SlugLength": "Length must be between 3 and 64 characters"
+}

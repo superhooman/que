@@ -3,12 +3,36 @@ import { CheckIcon, DotFilledIcon } from '@radix-ui/react-icons';
 import clsx from 'clsx';
 import React, { HTMLAttributes, ReactNode } from 'react';
 import { withClassName } from '../../hocs/withClassName';
+import { Stack } from '../Stack';
 
-import cls from './Menu.module.css';
+import cls from './Menu.module.scss';
+
+export const withIcon = <T extends { children?: ReactNode }>(Component: React.ComponentType<T>) => {
+  const ComponentWithClassName = (props : T & { icon: ReactNode }) => {
+    const { icon, children } = props;
+    const omittedProps = { ...props };
+
+    delete omittedProps.icon;
+    delete omittedProps.children;
+
+    return (
+      <Component {...omittedProps}>
+        <Stack gap={8} alignItems="center">
+          {icon}
+          <span>{children}</span>
+        </Stack>
+      </Component>
+    );
+  };
+
+  return ComponentWithClassName;
+};
 
 export const MenuLabel = withClassName(DropdownMenu.Label, cls.label);
 export const MenuItem = withClassName(DropdownMenu.Item, cls.item);
 export const MenuRightSlot = withClassName((props: HTMLAttributes<HTMLDivElement>) => <div {...props} />, cls.rightSlot);
+
+export const MenuItemWithIcon = withIcon(MenuItem);
 
 export const MenuSeparator = withClassName(DropdownMenu.Separator, cls.separator);
 
@@ -42,9 +66,20 @@ interface Props extends DropdownMenu.DropdownMenuProps {
   content: ReactNode;
   withArrow?: boolean;
   align?: 'start' | 'center' | 'end';
+  alignOfset?: number
+  sideOfset?: number;
+
 }
 
-const Menu: React.FC<Props> = ({ content, children, withArrow = true, align = 'center', ...props }) => (
+const Menu: React.FC<Props> = ({
+  content,
+  children,
+  withArrow = true,
+  align = 'center',
+  alignOfset = 0,
+  sideOfset = 8,
+  ...props
+}) => (
   <DropdownMenu.Root
     {...props}
   >
@@ -53,11 +88,18 @@ const Menu: React.FC<Props> = ({ content, children, withArrow = true, align = 'c
     </DropdownMenu.Trigger>
     <DropdownMenu.Content
       className={cls.root}
-      sideOffset={8}
+      sideOffset={sideOfset}
+      alignOffset={alignOfset}
       align={align}
     >
       {content}
-      {withArrow ? <DropdownMenu.Arrow offset={8} className={cls.arrow} /> : null}
+      {withArrow ? (
+        <DropdownMenu.Arrow offset={13} asChild>
+          <svg className={cls.arrow} width="32" height="12" viewBox="0 0 32 12" xmlns="http://www.w3.org/2000/svg">
+            <path d="M0 1C12 1 11.5 11 16 11C20.5 11 20 1 32 1" stroke="var(--c-border)" fill="var(--c-bg)"/>
+          </svg>
+        </DropdownMenu.Arrow>
+      ) : null}
     </DropdownMenu.Content>
   </DropdownMenu.Root>
 );

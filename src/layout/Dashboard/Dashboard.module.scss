@@ -1,0 +1,38 @@
+.root {
+    min-height: 100%;
+    max-width: 720px;
+    padding: 0 24px;
+    margin: auto;
+
+    display: flex;
+    flex-direction: column;
+
+    .header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 24px 0;
+    }
+
+    .logo {
+        display: block;
+        color: var(--c-grey3);
+    }
+
+    .main {
+        flex-grow: 1;
+        background-color: var(--c-bg);
+        border-radius: var(--base-radius-md);
+        box-shadow: var(--shadow-border);
+        padding: 32px;
+
+        @media screen and (max-width: 520px) {
+            padding: 0;
+            box-shadow: none;
+        }
+    }
+
+    .footer {
+        padding: 24px 0;
+    }
+}

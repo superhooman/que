@@ -1,0 +1,74 @@
+.text {
+    font-family: inherit;
+
+    line-height: 1.2;
+
+    &[data-size="xs"] {
+        font-size: var(--text-s-xs);
+    }
+
+    &[data-size="sm"] {
+        font-size: var(--text-s-sm);
+    }
+
+    &[data-size="md"] {
+        font-size: var(--text-s-md);
+    }
+
+    &[data-size="lg"] {
+        font-size: var(--text-s-lg);
+    }
+}
+
+b.text, strong.text {
+    font-weight: bold;
+}
+
+i.text {
+    font-style: italic;
+}
+
+.primary {
+    color: var(--c-text);
+}
+
+.secondary {
+    color: var(--c-text-secondary);
+}
+
+.error {
+    color: var(--c-red);
+}
+
+.heading {
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+}
+
+h1.heading {
+    font-size: var(--text-s-lg);
+}
+
+h2.heading {
+    font-size: var(--text-s-md);
+}
+
+h3.heading {
+    font-size: var(--text-s-sm);
+}
+
+h4.heading {
+    font-size: var(--text-s-xs);
+}
+
+.paragraph {
+    margin: 0.5rem 0;
+    font-size: var(--text-s-sm);
+    line-height: var(--text-line-height-p);
+}
+
+.text, .heading, .paragraph {
+    a {
+        text-decoration: underline;
+    }
+}

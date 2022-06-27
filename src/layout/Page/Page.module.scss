@@ -1,0 +1,18 @@
+.root {
+    max-width: 720px;
+    min-height: 100%;
+    margin: auto;
+    padding: 24px;
+
+    display: flex;
+    flex-direction: column;
+
+    .main {
+        flex-grow: 1;
+        padding-top: 40px;
+    }
+
+    .footer {
+        margin-top: 24px;
+    }
+}

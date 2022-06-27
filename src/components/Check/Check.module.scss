@@ -1,0 +1,22 @@
+.root {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 20px;
+    height: 20px;
+    margin: 0 8px;
+    color: var(--c-white);
+    border-radius: 50%;
+
+    &:not(.loading)[data-value="true"] {
+        background-color: var(--c-green);
+    }
+
+    &:not(.loading)[data-value="false"] {
+        background-color: var(--c-red);
+    }
+
+    &.loading {
+        color: inherit;
+    }
+}

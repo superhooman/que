@@ -1,0 +1,33 @@
+:root {
+  --c-white: #fff;
+  --c-bg: var(--c-white);
+  --c-control: #f2f2f2;
+  --c-border: #e5e5e5;
+  --c-border-secondary: var(--c-control);
+  --c-backdrop: rgba(0,0,0,.3);
+  --c-darken: rgba(0,0,0,.1);
+  --c-active: rgba(0,0,0,.05);
+  --c-grey1: #111;
+  --c-grey2: #666;
+  --c-grey3: #aaa;
+  --c-green: #32bd64;
+  --c-orange: #ffa500;
+  --c-red: #f04b4b;
+  --c-contrast: var(--c-white);
+  --c-text: var(--c-grey1);
+  --c-text-secondary: var(--c-grey2);
+}
+
+.dark:root {
+  --c-control: #1e1e1e;
+  --c-border: #585858;
+  --c-border-secondary: var(--c-control);
+  --c-backdrop: rgba(0,0,0,.3);
+  --c-darken: rgba(0,0,0,.1);
+  --c-active: rgba(255,255,255,.1);
+  --c-grey3: rgb(64, 64, 64);
+  --c-grey2: rgb(162, 162, 162);
+  --c-grey1: rgb(250, 250, 250);
+  --c-bg: var(--c-grey3);
+  --c-contrast: #111;
+}

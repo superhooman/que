@@ -1,0 +1,27 @@
+.root {
+    background-color: var(--c-bg);
+    padding: 16px;
+    border-radius: var(--base-radius-md);
+    box-shadow: var(--shadow-border);
+
+    width: 100%;
+
+    display: flex;
+    align-items: stretch;
+
+    gap: 12px;
+
+    .content {
+        position: relative;
+        flex-grow: 1;
+    }
+
+    .left {
+        flex-shrink: 0;
+    }
+
+    .menu {
+        float: right;
+        margin-bottom: 8px;
+    }
+}

@@ -1,7 +1,7 @@
-import React from 'react';
+import React, { HTMLAttributes, ReactNode } from 'react';
 import * as Dialog from '@radix-ui/react-dialog';
 
-import cls from './Modal.module.css';
+import cls from './Modal.module.scss';
 import { withClassName } from '../../hocs/withClassName';
 
 interface Props extends Dialog.DialogProps {

@@ -1,0 +1,15 @@
+.root {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .handle {
+        cursor: grab;
+        touch-action: manipulation;
+
+        &:active {
+            cursor: grabbing;
+        }
+    }
+}

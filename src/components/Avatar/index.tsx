@@ -1,35 +1,47 @@
 import React, { HTMLAttributes } from 'react';
 import * as AvatarBase from '@radix-ui/react-avatar';
-import cls from './Avatar.module.css';
+import cls from './Avatar.module.scss';
 import clsx from 'clsx';
+import { Loader } from '../Loader';
+import { Size } from '../../typings/size';
+import { PersonIcon } from '@radix-ui/react-icons';
 
-interface Props extends HTMLAttributes<HTMLSpanElement> {
+export interface AvatarProps extends HTMLAttributes<HTMLSpanElement> {
   image?: string;
   name?: string;
-  size?: 'xs' | 'sm' | 'md' | 'lg';
+  size?: Size;
+  loading?: boolean;
 }
 
-const getInitials = (name: string) => name.split(' ').map((n) => n[0] || '').join('');
+const getInitials = (name: string) => name.split(' ').map((n) => n[0].toUpperCase() || '').join('');
 
-export const Avatar = React.forwardRef<HTMLSpanElement, Props>(
-  ({ image, name = 'User', size = 'sm', className, ...props }, ref) => (
+export const Avatar = React.forwardRef<HTMLSpanElement, AvatarProps>(
+  ({ image, name, size = 'sm', className, loading, ...props }, ref) => (
     <AvatarBase.Root
       ref={ref}
       className={clsx(className, cls.root)}
       data-size={size}
       {...props}
     >
-      <AvatarBase.AvatarImage
-        src={image}
-        alt={name}
-        className={cls.img}
-      />
-      <AvatarBase.AvatarFallback
-        delayMs={600}
-        className={cls.fallback}
-      >
-        {getInitials(name)}
-      </AvatarBase.AvatarFallback>
+      {loading ? (
+        <div className={cls.loading}>
+          <Loader />
+        </div>
+      ) : (
+        <>
+          <AvatarBase.AvatarImage
+            src={image}
+            alt={name}
+            className={cls.img}
+          />
+          <AvatarBase.AvatarFallback
+            delayMs={600}
+            className={cls.fallback}
+          >
+            {name ? getInitials(name) : <PersonIcon />}
+          </AvatarBase.AvatarFallback>
+        </>
+      )}
     </AvatarBase.Root>
   )
 );

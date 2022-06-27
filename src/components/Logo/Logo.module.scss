@@ -1,0 +1,15 @@
+.root {
+    position: relative;
+
+    svg {
+        display: block;
+    }
+
+    &::after {
+        content: 'α';
+        display: block;
+        position: absolute;
+        bottom: -2px;
+        right: -12px;
+    }
+}

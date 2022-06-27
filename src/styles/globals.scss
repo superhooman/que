@@ -1,0 +1,44 @@
+@import '../constants/styles/index.scss';
+
+html {
+  height: 100%;
+}
+
+html, body {
+  background-color: var(--c-bg);
+}
+
+body {
+  font-family: var(--text-font-family);
+  font-size: var(--text-s-md);
+  line-height: var(--text-line-height);
+  color: var(--c-text);
+  display: flex;
+  min-height: 100%;
+}
+
+#__next {
+  flex: 1 1 auto;
+}
+
+ul, ol{
+  padding-inline-start: 16px;
+  font-size: var(--text-s-sm);
+}
+
+ul {
+  list-style: disc;
+}
+
+ol {
+  list-style: decimal;
+}
+
+* {
+  -webkit-tap-highlight-color: transparent;
+}
+
+*::selection {
+  background-color: var(--c-grey1);
+  color: var(--c-contrast);
+}

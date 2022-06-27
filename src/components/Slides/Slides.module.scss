@@ -1,0 +1,29 @@
+.root {
+    overflow: hidden;
+    border-radius: var(--base-radius-md);
+    margin: -24px;
+
+    .slidesWrapper {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: nowrap;
+      
+      transition: transform var(--a-time-sm) var(--a-slide);
+    }
+
+    .slide {
+      width: 50%;
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      opacity: 1;
+      transition: opacity var(--a-time-sm) var(--a-slide);
+
+      &[data-hidden="true"] {
+        opacity: 0;
+        & > * {
+          visibility: hidden;
+        }
+      }
+    }
+  }

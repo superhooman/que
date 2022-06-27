@@ -1,0 +1,11 @@
+:root {
+  --shadow-focus: 0 0 0 3px var(--c-active);
+  --shadow-border: 0 0 0 1px var(--c-border);
+  --shadow-sm: 0 4px 8px var(--c-active);
+  --shadow-md: 0 6px 16px var(--c-active);
+}
+
+.dark:root {
+  --shadow-sm: var(--shadow-border);
+  --shadow-md: var(--shadow-border);
+}

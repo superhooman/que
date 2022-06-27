@@ -1,0 +1,33 @@
+{
+  "signIn": "Sign in",
+  "disclaimer": "By continuing you agree to our terms of service and ",
+    "privacyPolicy": "privacy policy",
+    "providerGoogle": "Continue with Google",
+    "providerEmail": "Continue with email",
+
+    "email": "Email address",
+
+    "emailTitle": "Continue with an email link",
+    "emailText": "Enter your email and we'll send you a link to login to your account.",
+
+    "back": "Back",
+    "submit": "Submit",
+    "done": "Done",
+
+    "emailDoneTitle": "Check your inbox!",
+    "emailDoneText": "Open the link sent to {email} in this browser.",
+
+    "Signin": "Try signing in with a different account.",
+    "OAuthSignin": "Try signing in with a different account.",
+    "OAuthCallback": "Try signing in with a different account.",
+    "OAuthCreateAccount": "Try signing in with a different account.",
+    "EmailCreateAccount": "Try signing in with a different account.",
+    "Callback": "Try signing in with a different account.",
+    "OAuthAccountNotLinked":
+      "To confirm your identity, sign in with the same account you used originally.",
+    "EmailSignin": "The e-mail could not be sent.",
+    "CredentialsSignin":
+      "Sign in failed. Check the details you provided are correct.",
+    "SessionRequired": "Please sign in to access this page.",
+    "default": "Unable to sign in."
+}

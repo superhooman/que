@@ -1,70 +1,42 @@
-import type { GetServerSideProps, NextPage } from 'next';
-import { Stack } from '../components/Stack';
-import { getSession, useSession } from 'next-auth/react';
-import { Session } from 'next-auth';
-import { Avatar } from '../components/Avatar';
+import { HeartFilledIcon } from '@radix-ui/react-icons';
+import { GetServerSideProps, NextPage } from 'next';
+import { getSession } from 'next-auth/react';
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
+import Head from 'next/head';
+import Image from 'next/image';
 import Link from 'next/link';
 import { Button } from '../components/Button';
-import { Menu, MenuCheckboxItem, MenuItem, MenuLabel, MenuRadioGroup, MenuRadioItem, MenuRightSlot, MenuSeparator } from '../components/Menu';
+import { Space } from '../components/Space';
+import { Paragraph, Title } from '../components/Typography';
+import { LandingLayout } from '../layout/Landing';
+import { Session } from '../typings/session';
 
-interface Props {
-  session: Session | null;
-}
-
-const Home: NextPage = () => {
-  const { data: session, status } = useSession();
-
-  if (!session || !session.user) {
-    return (
-      <Link href="/modal">
-        <a>to login</a>
+const Index: NextPage = () => (
+  <LandingLayout>
+    <Head>
+      <title>Que | Mirco landing pages</title>
+    </Head>
+    <div style={{ textAlign: 'center' }}>
+      <Title font={32} level={1} style={{ lineHeight: 1.2 }}>Simple micro landing pages</Title>
+      <Paragraph>Create effective micro landing page in several minutes without special skills</Paragraph>
+      <Space size={24} />
+      <Link href="/dashboard">
+        <Button variant="primary" icon={<HeartFilledIcon />}>Try for free</Button>
       </Link>
-    );
-  }
-
-  return (
-    <div style={{
-      height: '100vh',
-      display: 'flex',
-      alignItems: 'center',
-      justifyContent: 'center',
-      flexDirection: 'column',
-    }}>
-      <Stack direction="column" gap={20} alignItems="center">
-        <Menu
-          align="end"
-          content={(
-            <>
-              <MenuItem>Profile</MenuItem>
-              <MenuItem>Logout<MenuRightSlot>ctrl+L</MenuRightSlot></MenuItem>
-              <MenuSeparator />
-              <MenuLabel>Theme</MenuLabel>
-              <MenuRadioGroup value="light">
-                <MenuRadioItem value="light">Light</MenuRadioItem>
-                <MenuRadioItem value="dark">Dark</MenuRadioItem>
-                <MenuRadioItem value="system">System</MenuRadioItem>
-              </MenuRadioGroup>
-            </>
-          )}>
-          <Avatar
-            image={session.user?.image || ''}
-            name={session.user?.name || ''}
-            size="md"
-          />
-        </Menu>
-      </Stack>
+      <Space size={24} />
+      <Image src="/assets/hero.png" width={540} height={560} alt="Page screenshot" />
     </div>
-  );
-};
+  </LandingLayout>
+);
 
-export default Home;
+export default Index;
 
-export const getServerSideProps: GetServerSideProps<Props> = async (ctx) => {
-  const session = await getSession(ctx);
-
+export const getServerSideProps: GetServerSideProps = async (ctx) => {
+  const session = (await getSession(ctx)) as Session;
   return {
     props: {
       session,
+      ...(await serverSideTranslations(ctx.locale || 'en', ['common', 'create', 'errors'])),
     }
   };
 };
