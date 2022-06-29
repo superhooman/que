@@ -21,6 +21,7 @@
     "@radix-ui/react-dropdown-menu": "^0.1.7-rc.30",
     "@radix-ui/react-icons": "^1.1.1",
     "@reduxjs/toolkit": "^1.8.2",
+    "@splitbee/web": "^0.3.0",
     "@trpc/client": "^9.25.3",
     "@trpc/next": "^9.25.3",
     "@trpc/react": "^9.25.3",

@@ -3,15 +3,19 @@ import type { Session } from 'next-auth';
 import { SessionProvider } from 'next-auth/react';
 import { appWithTranslation } from 'next-i18next';
 import NextProgress from 'next-progress';
-
-import '../styles/reset.css';
-import '../styles/globals.scss';
 import Head from 'next/head';
 import { withTRPC } from '@trpc/next';
 import { AppRouter } from './api/trpc/[trpc]';
+import { useBee } from '../hooks/useBee';
+
+import '../styles/reset.css';
+import '../styles/globals.scss';
 
 const App = ({ Component, pageProps }: AppProps) => {
   const session = pageProps.session as Session;
+
+  useBee();
+
   return (
     <SessionProvider session={session}>
       <Head>
