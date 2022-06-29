@@ -41,7 +41,11 @@ export default withTRPC<AppRouter>({
      * @link https://trpc.io/docs/ssr
      */
     const url = process.env.NODE_ENV === 'production'
-      ? 'https://que.fyi/api/trpc'
+      ? `https://${
+          process.env.NEXT_PUBLIC_VERCEL_ENV === 'production'
+            ? 'que.fyi'
+            : process.env.NEXT_PUBLIC_VERCEL_URL
+        }/api/trpc`
       : 'http://localhost:3000/api/trpc';
 
     return {
