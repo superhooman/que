@@ -4,7 +4,7 @@ import * as trpc from '@trpc/server';
 import { NodeHTTPCreateContextFnOptions } from '@trpc/server/adapters/node-http';
 import * as trpcNext from '@trpc/server/adapters/next';
 
-import { prisma } from '../prisma/client';
+import { prisma } from '../prisma/edge';
 import { Session } from '../typings/session';
 
 export const createContext = async ({

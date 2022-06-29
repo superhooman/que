@@ -3,6 +3,10 @@ import * as trpcNext from '@trpc/server/adapters/next';
 import { Context, createContext } from '../../../server/context';
 import { pageRouter } from '../../../server/routes/page';
 
+export const config = {
+  runtime: 'experimental-edge',
+};
+
 export const appRouter = trpc
   .router<Context>()
   .merge('page.', pageRouter);
