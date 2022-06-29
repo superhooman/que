@@ -1,15 +1,18 @@
-import React, { ComponentType } from 'react';
+import React from 'react';
 import { z, ZodTypeAny } from 'zod';
 import { Block as BlockBaseType, BlockType } from '../typings/page';
 import { LinkBlock, LinkBlockEditor, linkSchema } from './link';
 import { TextBlock, TextBlockEditor, textSchema } from './text';
+import { YouTubeBlock, YouTubeBlockEditor, youtubeSchema } from './youtube';
 
 export interface BlockProps<Data extends object> {
     data: Data,
+    preview?: boolean;
 };
 
 export interface RendererProps<B extends BlockBaseType> {
     block: B;
+    preview?: boolean;
 };
 
 export interface EditBlockProps<Data extends object> {
@@ -31,7 +34,11 @@ const getFullSchema = <T extends ZodTypeAny>(type: BlockType, schema: T) => z.ob
     id: z.string(),
 });
 
-export const blocksSchemas = z.union([getFullSchema('text', textSchema), getFullSchema('link', linkSchema)]).array();
+export const blocksSchemas = z.union([
+    getFullSchema('text', textSchema),
+    getFullSchema('link', linkSchema),
+    getFullSchema('youtube', youtubeSchema),
+]).array();
 
 export const blockAdapter = {
     text: {
@@ -49,7 +56,14 @@ export const blockAdapter = {
             text: 'Link',
             url: 'https://',
         }
-    }
+    },
+    youtube: {
+        Editor: YouTubeBlockEditor,
+        Block: YouTubeBlock,
+        initialData: {
+            url: '',
+        },
+    },
 };
 
 export const BlockEditor: React.FC<EditorProps<BlockBaseType>> = ({ block, ...props }) => {

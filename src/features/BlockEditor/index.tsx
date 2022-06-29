@@ -22,7 +22,7 @@ import {
     restrictToVerticalAxis,
 } from '@dnd-kit/modifiers';
 import { blockAdapter, BlockEditor as Editor } from '../../blocks';
-import { Block, BlockType } from '../../typings/page';
+import { Block } from '../../typings/page';
 import { Button } from '../../components/Button';
 import { Stack } from '../../components/Stack';
 import { useTranslation } from 'next-i18next';
@@ -162,6 +162,7 @@ export const BlockEditor: React.FC<Props> = (props) => {
     // TODO 
     const addBlockText = React.useCallback(() => addBlock('text'), [addBlock]);
     const addBlockLink = React.useCallback(() => addBlock('link'), [addBlock]);
+    const addBlockYouTube = React.useCallback(() => addBlock('youtube'), [addBlock]);
 
     return (
         <>
@@ -193,6 +194,7 @@ export const BlockEditor: React.FC<Props> = (props) => {
             <Stack gap={8} wrap>
                 <Button icon={<TextIcon />} onClick={addBlockText}>{t('b.text')}</Button>
                 <Button icon={<Link1Icon />} onClick={addBlockLink}>{t('b.link')}</Button>
+                <Button icon="youtube" onClick={addBlockYouTube}>{t('b.youtube')}</Button>
             </Stack>
             <Modal
                 open={modal}

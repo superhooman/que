@@ -4,7 +4,6 @@ import React from 'react';
 import { z } from 'zod';
 import { BlockProps, EditBlockProps } from '..';
 import { Button } from '../../components/Button';
-import { Card } from '../../components/Card';
 import { Input, TextArea } from '../../components/Input';
 import { Stack } from '../../components/Stack';
 import { Paragraph, Title } from '../../components/Typography';

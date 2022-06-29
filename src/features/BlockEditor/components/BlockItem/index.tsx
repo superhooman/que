@@ -91,7 +91,7 @@ export const BlockItem: React.FC<Props> = ({ block, onEdit, onRemove }) => {
             style={style}
         >
             <Text type="secondary" size="xs">{t(`b.${block.type}`)}</Text>
-            <BlockRenderer block={block} />
+            <BlockRenderer block={block} preview />
         </Card>
     );
 };

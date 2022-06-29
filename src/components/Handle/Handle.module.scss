@@ -13,5 +13,9 @@
         svg {
             display: block;
         }
+
+        &:active {
+            cursor: grabbing;
+        }
     }
 }

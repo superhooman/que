@@ -11,6 +11,7 @@
     "url": "URL",
     "b.text": "Text Block",
     "b.link": "Link Block",
+    "b.youtube": "YouTube Video",
     "empty": "Empty",
     "addBlock": "Add a block to get started"
 }
