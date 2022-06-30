@@ -1,25 +1,27 @@
 import { IncomingMessage, ServerResponse } from 'http';
-import { getSession } from 'next-auth/react';
 import * as trpc from '@trpc/server';
 import { NodeHTTPCreateContextFnOptions } from '@trpc/server/adapters/node-http';
 import * as trpcNext from '@trpc/server/adapters/next';
+import { NextApiRequestCookies } from 'next/dist/server/api-utils';
 
 import { prisma } from '../prisma/edge';
-import { Session } from '../typings/session';
+import { getToken } from '../utils/getToken';
 
 export const createContext = async ({
     req,
     res,
 }:
     | trpcNext.CreateNextContextOptions
-    | NodeHTTPCreateContextFnOptions<IncomingMessage, ServerResponse>) => {
-    const session = (await getSession({ req })) as Session;
+    | NodeHTTPCreateContextFnOptions<IncomingMessage & {
+        cookies: NextApiRequestCookies;
+    }, ServerResponse>) => {
+    const token = await getToken(req);
 
     return {
         req,
         res,
         prisma,
-        session,
+        token,
     };
 };
 

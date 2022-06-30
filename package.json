@@ -7,9 +7,11 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "build:vercel": "npm run prisma:generate && npm run prisma:migrate && next build",
-    "prisma:generate": "prisma generate --data-proxy",
-    "prisma:migrate": "DATABASE_URL=\"$MIGRATE_DATABASE_URL\" prisma migrate deploy"
+    "build:vercel": "npm run prisma:generate:prod && npm run prisma:migrate:prod && next build",
+    "prisma:generate:dev": "prisma generate",
+    "prisma:generate:prod": "prisma generate --data-proxy",
+    "prisma:migrate:dev": "dotenv -e .env.development.local -- npx prisma migrate dev",
+    "prisma:migrate:prod": "DATABASE_URL=\"$MIGRATE_DATABASE_URL\" prisma migrate deploy"
   },
   "dependencies": {
     "@dnd-kit/core": "^6.0.5",

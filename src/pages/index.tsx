@@ -1,6 +1,6 @@
 import { HeartFilledIcon } from '@radix-ui/react-icons';
 import { GetServerSideProps, NextPage } from 'next';
-import { getSession } from 'next-auth/react';
+import { Session } from 'next-auth';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import Head from 'next/head';
 import Image from 'next/image';
@@ -9,7 +9,6 @@ import { Button } from '../components/Button';
 import { Space } from '../components/Space';
 import { Paragraph, Title } from '../components/Typography';
 import { LandingLayout } from '../layout/Landing';
-import { Session } from '../typings/session';
 
 const Index: NextPage = () => (
   <LandingLayout>
@@ -32,10 +31,8 @@ const Index: NextPage = () => (
 export default Index;
 
 export const getServerSideProps: GetServerSideProps = async (ctx) => {
-  const session = (await getSession(ctx)) as Session;
   return {
     props: {
-      session,
       ...(await serverSideTranslations(ctx.locale || 'en', ['common', 'create', 'errors'])),
     }
   };

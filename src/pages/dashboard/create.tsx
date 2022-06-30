@@ -89,10 +89,10 @@ const Create: NextPage = () => {
 
 export default Create;
 
-export const getServerSideProps = withAuth(async ({ locale }, session) => {
+export const getServerSideProps = withAuth(async ({ locale }, { id }) => {
     const exists = (await prisma.page.count({
         where: {
-            userId: session.id,
+            userId: id,
         },
     })) > 0;
 

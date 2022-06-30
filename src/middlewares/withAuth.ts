@@ -1,13 +1,13 @@
 import { GetServerSideProps, GetServerSidePropsContext, GetServerSidePropsResult, PreviewData } from 'next';
-import { getSession } from 'next-auth/react';
+import { JWT } from 'next-auth/jwt';
 import { ParsedUrlQuery } from 'querystring';
-import { Session } from '../typings/session';
+import { getToken } from '../utils/getToken';
 
 type Handler<
     P extends { [key: string]: any } = { [key: string]: any },
     Q extends ParsedUrlQuery = ParsedUrlQuery,
     D extends PreviewData = PreviewData
-> = (context: GetServerSidePropsContext<Q, D>, session: Session) => Promise<GetServerSidePropsResult<P>>
+> = (context: GetServerSidePropsContext<Q, D>, token: JWT) => Promise<GetServerSidePropsResult<P>>
 
 const isHandler = <
     P extends { [key: string]: any } = { [key: string]: any },
@@ -22,11 +22,11 @@ export const withAuth = <
   Q extends ParsedUrlQuery = ParsedUrlQuery,
   D extends PreviewData = PreviewData
 >(handlerOrProps: Handler<P, Q, D> | P, redirect = '/auth'): GetServerSideProps<P, Q, D> => async (ctx) => {
-    const session = (await getSession(ctx)) as Session;
+    const token = await getToken(ctx.req);
 
-    if (session) {
+    if (token) {
         if (isHandler(handlerOrProps)) {
-            return await handlerOrProps(ctx, session);
+            return await handlerOrProps(ctx, token);
         }
         return {
             props: handlerOrProps as P,

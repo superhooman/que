@@ -1,4 +1,4 @@
-import NextAuth from 'next-auth';
+import NextAuth, { NextAuthOptions } from 'next-auth';
 import { Provider } from 'next-auth/providers';
 import EmailProvider from 'next-auth/providers/email';
 import GoogleProvider from 'next-auth/providers/google';
@@ -28,17 +28,37 @@ if (process.env.GOOGLE_CLIENT_ID && process.env.GOOGLE_CLIENT_SECRET) {
   );
 }
 
-export default NextAuth({
+export const authOptions: NextAuthOptions = {
   adapter: PrismaAdapter(prisma),
   providers,
   pages: {
     signIn: '/auth',
     signOut: '/auth/logout'
   },
-  callbacks: {
-    session: ({ session, user }) => ({
-      ...session,
-      id: user.id,
-    }),
+  session: {
+    strategy: 'jwt',
+    maxAge: 60 * 60 * 24 * 30,
   },
-});
+  callbacks: {
+    session: ({ session, user }) => {
+      if (user && user.id) {
+        return ({
+          ...session,
+          id: user.id,
+        });
+      }
+      return session;
+    },
+    jwt: async({ token, user }) => {
+      if (user && user.id) {
+        return ({
+          ...token,
+          id: user.id,
+        });
+      }
+      return token;
+    }
+  },
+};
+
+export default NextAuth(authOptions);

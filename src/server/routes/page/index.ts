@@ -43,7 +43,7 @@ export const pageRouter = createRouter<Context>()
             const page = await ctx.prisma.page.create({
                 data: {
                     slug: loweredSlug,
-                    userId: ctx.session.id,
+                    userId: ctx.token.id,
                     blocks: [],
                 },
             });
@@ -67,7 +67,7 @@ export const pageRouter = createRouter<Context>()
 
             const page = await ctx.prisma.page.findFirst({ 
                 where: {
-                    userId: ctx.session.id,
+                    userId: ctx.token.id,
                     slug: loweredSlug,
                 },
             });

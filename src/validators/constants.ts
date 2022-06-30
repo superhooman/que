@@ -6,4 +6,4 @@ export enum FormErrors {
     EXTRA = 'Extra',
 
     TEXT_LENGTH = 'TextLength',
-}
+};

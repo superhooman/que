@@ -90,10 +90,10 @@ const Home: NextPage<Props> = ({ page }) => {
 
 export default Home;
 
-export const getServerSideProps = withAuth(async ({ locale }, session) => {
+export const getServerSideProps = withAuth(async ({ locale }, { id }) => {
   const page = (await prisma.page.findFirst({
     where: {
-      userId: session.id,
+      userId: id,
     },
   })) as Page | null;
 
@@ -109,7 +109,6 @@ export const getServerSideProps = withAuth(async ({ locale }, session) => {
     props: {
       ...(await serverSideTranslations(locale || 'en', ['common', 'create', 'errors'])),
       page,
-      session,
     }
   };
 });

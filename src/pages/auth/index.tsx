@@ -1,7 +1,7 @@
 import { EnvelopeClosedIcon } from '@radix-ui/react-icons';
 import { useFormik } from 'formik';
 import { GetServerSideProps, NextPage } from 'next';
-import { ClientSafeProvider, getCsrfToken, getProviders, getSession, signIn } from 'next-auth/react';
+import { ClientSafeProvider, getCsrfToken, getProviders, signIn } from 'next-auth/react';
 import { useTranslation } from 'next-i18next';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import Head from 'next/head';
@@ -15,6 +15,7 @@ import { Slides } from '../../components/Slides';
 import { Stack } from '../../components/Stack';
 import { Paragraph, Text, Title } from '../../components/Typography';
 import { AuthLayout } from '../../layout/Auth';
+import { getToken } from '../../utils/getToken';
 import { emailSchema } from '../../validators/login/email';
 
 type SignInErrorTypes =
@@ -251,9 +252,8 @@ const Login: NextPage<Props> = ({ providers, csrfToken, error }) => {
 export default Login;
 
 export const getServerSideProps: GetServerSideProps<Props> = async (ctx) => {
-    const session = await getSession(ctx);
-
-    if (session) {
+    const token = await getToken(ctx.req);
+    if (token) {
         return {
             redirect: {
                 destination: '/dashboard',
