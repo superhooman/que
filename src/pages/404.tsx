@@ -1,6 +1,6 @@
 import { NextPage } from 'next';
 import { Paragraph, Title } from '../components/Typography';
-import { AuthLayout } from '../layout/Auth';
+import { SmallLayout } from '../layout/Small';
 
 interface Props {
     statusCode?: number;
@@ -14,14 +14,14 @@ const codeToError: Record<number, string> = {
 const Error: NextPage<Props> = ({ statusCode = 404 }) => {
     return (
         <>
-            <AuthLayout>
+            <SmallLayout>
                 <div style={{
                     textAlign: 'center',
                 }}>
                     {statusCode ? <Title>{statusCode}</Title> : null}
                     <Paragraph>{codeToError[statusCode || 500]}</Paragraph>
                 </div>
-            </AuthLayout>
+            </SmallLayout>
         </>
     );
 };

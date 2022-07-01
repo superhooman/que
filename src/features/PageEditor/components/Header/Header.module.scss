@@ -1,0 +1,19 @@
+.root {
+    position: sticky;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: stretch;
+    top: 0;
+    
+    width: calc(100% + 48px);
+    margin: 0 -24px;
+
+    padding: 12px 24px;
+    z-index: 10;
+
+    height: 56px;
+
+    border-bottom: 1px var(--c-border) solid;
+    background-color: var(--c-bg);
+}

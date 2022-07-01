@@ -72,7 +72,7 @@ export const YouTubeBlock: React.FC<BlockProps<YouTubeBlockData>> = ({ data, pre
         {preview ? (
             <div
                 style={{
-                    backgroundImage: `url(https://i.ytimg.com/vi_webp/${getId(data.url)}/maxresdefault.webp)`,
+                    backgroundImage: `url(https://i.ytimg.com/vi_webp/${getId(data.url)}/hqdefault.webp)`,
                 }}
                 className={cls.poster}
             >

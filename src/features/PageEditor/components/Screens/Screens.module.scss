@@ -1,0 +1,40 @@
+.root {
+    @media screen and (max-width: 720px) {
+        padding-bottom: 64px;
+        &[data-screen="preview"] {
+            .editor {
+                display: none;
+            }
+        }
+        &[data-screen="editor"] {
+            .preview {
+                display: none;
+            }
+        }
+    }
+}
+
+.menu {
+    display: none;
+
+    .button {
+        line-height: 36px;
+        height: 36px;
+        padding: 0 16px;
+        border-radius: var(--base-radius-full);
+    }
+
+    @media screen and (max-width: 720px) {
+        position: fixed;
+        bottom: 8px;
+        display: block;
+        z-index: 10;
+        left: 50%;
+        transform: translateX(-50%);
+        width: fit-content;
+        padding: 8px;
+        border-radius: var(--base-radius-full);
+        background-color: var(--c-bg);
+        box-shadow: var(--shadow-border);
+    }
+}

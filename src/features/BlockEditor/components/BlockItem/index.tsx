@@ -1,6 +1,6 @@
 import { useSortable } from '@dnd-kit/sortable';
 import { CSS } from '@dnd-kit/utilities';
-import { DotsVerticalIcon, Pencil2Icon, TrashIcon } from '@radix-ui/react-icons';
+import { DotsVerticalIcon, PencilAltIcon, TrashIcon } from '@heroicons/react/solid';
 import clsx from 'clsx';
 import { useTranslation } from 'next-i18next';
 import React from 'react';
@@ -69,7 +69,7 @@ export const BlockItem: React.FC<Props> = ({ block, onEdit, onRemove }) => {
                     content={(
                         <>
                             <MenuItemWithIcon
-                                icon={<Pencil2Icon />}
+                                icon={<PencilAltIcon />}
                                 onClick={edit}
                             >
                                 {t('edit')}

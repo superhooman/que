@@ -69,6 +69,6 @@ export const TextBlockEditor: React.FC<EditBlockProps<TextBlockData>> = ({ id, i
 export const TextBlock: React.FC<BlockProps<TextBlockData>> = ({ data }) => (
     <div className={cls.root}>
         {data.title && <Title>{data.title}</Title>}
-        <Paragraph>{data.text}</Paragraph>
+        <Paragraph noMargin>{data.text}</Paragraph>
     </div>
 );

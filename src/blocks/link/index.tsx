@@ -1,4 +1,4 @@
-import { Link2Icon } from '@radix-ui/react-icons';
+import { LinkIcon } from '@heroicons/react/solid';
 import { useFormik } from 'formik';
 import { useTranslation } from 'next-i18next';
 import React, { ReactNode } from 'react';
@@ -7,15 +7,21 @@ import { BlockProps, EditBlockProps } from '..';
 import { Button } from '../../components/Button';
 import { Input } from '../../components/Input';
 import { Stack } from '../../components/Stack';
+import { Swatch } from '../../components/Swatch';
 import { BlockBase } from '../../typings/page';
 import { zodToFormik } from '../../utils/zodToFormik';
 import { FormErrors } from '../../validators/constants';
 
 import cls from './Link.module.scss';
 
+const variantSchema = z.enum(['default', 'primary']);
+
+type Variant = z.infer<typeof variantSchema>;
+
 interface LinkBlockData {
     url: string;
     text: string;
+    variant?: Variant;
 };
 
 export interface LinkBlockType extends BlockBase {
@@ -25,6 +31,7 @@ export interface LinkBlockType extends BlockBase {
 
 export const linkSchema = z.object({
     text: z.string().max(1024, FormErrors.TEXT_LENGTH),
+    variant: variantSchema.optional(),
     url: z.string().url(),
 });
 
@@ -38,7 +45,7 @@ const iconMap = [
     ['discord.com/', 'discord'],
     ['github.com/', 'github'],
     ['facebook.com/', 'facebook'],
-    ['fb.com/', 'fb'],
+    ['fb.com/', 'facebook'],
     ['wa.me/', 'whatsapp'],
     ['whatsapp.com', 'whatsapp'],
     ['twitch.com/', 'twitch'],
@@ -62,11 +69,13 @@ export const LinkBlockEditor: React.FC<EditBlockProps<LinkBlockData>> = ({ id, i
         onSave(id, data);
     }, [id, onSave]);
 
-    const { getFieldProps, touched, errors, handleSubmit, values } = useFormik<LinkBlockData>({
+    const { getFieldProps, touched, errors, handleSubmit, values, setFieldValue } = useFormik<LinkBlockData>({
         initialValues: initialData,
         onSubmit,
         validationSchema: zodToFormik(linkSchema),
     });
+
+    const handleSwatchChange = React.useCallback((value: string) => setFieldValue('variant', value), [setFieldValue]);
 
     const handleCancel = React.useCallback(() => onCancel(id), [onCancel, id]);
 
@@ -80,9 +89,24 @@ export const LinkBlockEditor: React.FC<EditBlockProps<LinkBlockData>> = ({ id, i
                 />
                 <Input
                     label={t('url')}
-                    icon={getIconFromUrl(values.url, <Link2Icon />)}
+                    icon={getIconFromUrl(values.url, <LinkIcon />)}
                     error={touched.url && errors.url && errorsT(errors.url)}
                     {...getFieldProps('url')}
+                />
+                <Swatch
+                    onChange={handleSwatchChange}
+                    items={[
+                        {
+                            value: 'default',
+                            label: t('button.default'),
+                        },
+                        {
+                            value: 'primary',
+                            label: t('button.primary'),
+                        }
+                    ]}
+                    label={t('variant')}
+                    value={values.variant || 'default'}
                 />
                 <Stack gap={8} justifyContent="end">
                     <Button onClick={handleCancel} variant="ghost">{t('cancel')}</Button>
@@ -95,8 +119,15 @@ export const LinkBlockEditor: React.FC<EditBlockProps<LinkBlockData>> = ({ id, i
 
 export const LinkBlock: React.FC<BlockProps<LinkBlockData>> = ({ data }) => (
     <div className={cls.root}>
-        <a href={data.url} target="_blank" rel="noreferrer">
-            <Button icon={getIconFromUrl(data.url)} size="large" fullWidth>{data.text}</Button>
-        </a>
+        <Button
+            href={data.url}
+            target="_blank"
+            icon={getIconFromUrl(data.url)}
+            size="large"
+            variant={data.variant}
+            fullWidth
+        >
+            {data.text}
+        </Button>
     </div>
 );

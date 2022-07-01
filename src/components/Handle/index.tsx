@@ -1,12 +1,12 @@
 import React from 'react';
-import { DragHandleDots2Icon } from '@radix-ui/react-icons';
+import { MenuAlt4Icon } from '@heroicons/react/solid';
 import clsx from 'clsx';
 import cls from './Handle.module.scss';
 
 export const Handle = React.forwardRef<HTMLDivElement, React.HTMLAttributes<HTMLDivElement>>(({ className, ...props }, ref) => (
     <div className={clsx(cls.root, className)}>
         <div className={cls.handle} {...props} ref={ref}>
-            <DragHandleDots2Icon />
+            <MenuAlt4Icon width={15} />
         </div>
     </div>
 ));

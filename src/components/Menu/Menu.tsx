@@ -1,5 +1,5 @@
 import * as DropdownMenu from '@radix-ui/react-dropdown-menu';
-import { CheckIcon, DotFilledIcon } from '@radix-ui/react-icons';
+import { CheckIcon } from '@heroicons/react/solid';
 import clsx from 'clsx';
 import React, { HTMLAttributes, ReactNode } from 'react';
 import { withClassName } from '../../hocs/withClassName';
@@ -18,7 +18,7 @@ export const withIcon = <T extends { children?: ReactNode }>(Component: React.Co
     return (
       <Component {...omittedProps}>
         <Stack gap={8} alignItems="center">
-          {icon}
+          <div className={cls.icon}>{icon}</div>
           <span>{children}</span>
         </Stack>
       </Component>
@@ -56,7 +56,7 @@ export const MenuRadioItem: React.FC<DropdownMenu.DropdownMenuRadioItemProps> = 
     {...props}
   >
     <DropdownMenu.ItemIndicator className={cls.indicator}>
-      <DotFilledIcon />
+      <span>•</span>
     </DropdownMenu.ItemIndicator>
     {children}
   </DropdownMenu.RadioItem>

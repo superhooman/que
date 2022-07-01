@@ -1,13 +1,15 @@
 .root {
-    height: 100%;
+    height: calc(100% + 16px);
     display: flex;
     align-items: center;
     justify-content: center;
+    touch-action: none;
+    margin: -8px;
+    padding: 8px 0;
 
     .handle {
         cursor: grab;
         touch-action: manipulation;
-        margin: 0 -8px;
         padding: 0 8px;
 
         svg {

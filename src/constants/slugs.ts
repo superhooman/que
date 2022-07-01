@@ -10,4 +10,5 @@ export const RESTRICTED_OR_RESERVED_SLUGS = [
     'que.fyi',
     'test',
     'landing',
+    'page',
 ];

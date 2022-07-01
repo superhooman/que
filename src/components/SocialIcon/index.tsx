@@ -1,6 +1,8 @@
 import React from 'react';
 
-const BASE_URL = 'https://unpkg.com/simple-icons@v7/icons/';
+import cls from './SocialIcon.module.scss';
+
+const BASE_URL = '/assets/socials/';
 
 const getUrl = (icon: string) => `${BASE_URL}${icon}.svg`;
 
@@ -11,6 +13,6 @@ interface Props {
 export const SocialIcon: React.FC<Props> = ({ icon }) => {
     return (
         // eslint-disable-next-line @next/next/no-img-element
-        <img src={getUrl(icon)} alt="Icon" />
+        <img className={cls.root} src={getUrl(icon)} alt="Icon" />
     );
 };

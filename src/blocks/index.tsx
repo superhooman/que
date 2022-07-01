@@ -45,15 +45,15 @@ export const blockAdapter = {
         Editor: TextBlockEditor,
         Block: TextBlock,
         initialData: {
-            text: 'Title',
-            title: 'Text',
+            text: '',
+            title: '',
         }
     },
     link: {
         Editor: LinkBlockEditor,
         Block: LinkBlock,
         initialData: {
-            text: 'Link',
+            text: '',
             url: 'https://',
         }
     },

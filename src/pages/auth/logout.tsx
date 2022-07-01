@@ -5,7 +5,7 @@ import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import { Loader } from '../../components/Loader';
 import { Stack } from '../../components/Stack';
 import { Paragraph } from '../../components/Typography';
-import { AuthLayout } from '../../layout/Auth';
+import { SmallLayout } from '../../layout/Small';
 import { withAuth } from '../../middlewares/withAuth';
 import { useTranslation } from 'next-i18next';
 
@@ -20,12 +20,12 @@ const Logout = () => {
     }, [router]);
 
     return (
-        <AuthLayout>
+        <SmallLayout>
             <Stack fullWidth gap={8} alignItems="center" justifyContent="center">
                 <Paragraph>{t('loggingOut')}</Paragraph>
                 <Loader />
             </Stack>
-        </AuthLayout>
+        </SmallLayout>
     );
 };
 

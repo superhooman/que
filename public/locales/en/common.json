@@ -13,5 +13,11 @@
     "b.link": "Link Block",
     "b.youtube": "YouTube Video",
     "empty": "Empty",
-    "addBlock": "Add a block to get started"
+    "addBlock": "Add a block to get started",
+    "editor": "Editor",
+    "preview": "Preview",
+    "open": "Open",
+    "button.default": "Default",
+    "button.primary": "Primary",
+    "variant": "Variant"
 }

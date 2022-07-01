@@ -4,7 +4,7 @@ import cls from './Avatar.module.scss';
 import clsx from 'clsx';
 import { Loader } from '../Loader';
 import { Size } from '../../typings/size';
-import { PersonIcon } from '@radix-ui/react-icons';
+import { UserIcon } from '@heroicons/react/solid';
 
 export interface AvatarProps extends HTMLAttributes<HTMLSpanElement> {
   image?: string;
@@ -38,7 +38,7 @@ export const Avatar = React.forwardRef<HTMLSpanElement, AvatarProps>(
             delayMs={600}
             className={cls.fallback}
           >
-            {name ? getInitials(name) : <PersonIcon />}
+            {name ? getInitials(name) : <UserIcon />}
           </AvatarBase.AvatarFallback>
         </>
       )}

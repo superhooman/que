@@ -10,13 +10,15 @@ interface Props extends HTMLAttributes<HTMLDivElement> {
   grow?: CSSProperties['flexGrow'];
   fullWidth?: boolean;
   wrap?: boolean;
+  equalStretch?: boolean;
 }
 
 export const Stack = React.forwardRef<HTMLDivElement, Props>(
-  ({ className, direction = 'row', alignItems, justifyContent, gap, grow, style, fullWidth, wrap, ...props }, ref) => (
+  ({ className, direction = 'row', alignItems, justifyContent, gap, grow, style, fullWidth, wrap, equalStretch, ...props }, ref) => (
     <div
       className={clsx(className, cls.root, {
         [cls.fullWidth]: fullWidth,
+        [cls.equalStretch]: equalStretch,
       })}
       style={{
         flexDirection: direction,

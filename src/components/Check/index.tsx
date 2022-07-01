@@ -1,4 +1,4 @@
-import { CheckIcon, Cross2Icon } from '@radix-ui/react-icons';
+import { CheckIcon, XIcon } from '@heroicons/react/solid';
 import clsx from 'clsx';
 import { Loader } from '../Loader';
 import cls from './Check.module.scss';
@@ -21,7 +21,7 @@ export const Check: React.FC<Props> = ({ value, loading }) => {
             {value ? (
                 <CheckIcon />
             ) : (
-                <Cross2Icon />
+                <XIcon />
             )}
         </div>
     );

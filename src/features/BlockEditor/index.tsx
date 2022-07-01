@@ -27,7 +27,7 @@ import { Button } from '../../components/Button';
 import { Stack } from '../../components/Stack';
 import { useTranslation } from 'next-i18next';
 import { Space } from '../../components/Space';
-import { Link1Icon, TextIcon } from '@radix-ui/react-icons';
+import { LinkIcon, MenuAlt2Icon } from '@heroicons/react/solid';
 import { ModalTitle } from '../../components/Modal';
 import { Empty } from './components/Empty';
 
@@ -192,8 +192,8 @@ export const BlockEditor: React.FC<Props> = (props) => {
             </DndContext>
             <Space size={16} />
             <Stack gap={8} wrap>
-                <Button icon={<TextIcon />} onClick={addBlockText}>{t('b.text')}</Button>
-                <Button icon={<Link1Icon />} onClick={addBlockLink}>{t('b.link')}</Button>
+                <Button icon={<MenuAlt2Icon />} onClick={addBlockText}>{t('b.text')}</Button>
+                <Button icon={<LinkIcon />} onClick={addBlockLink}>{t('b.link')}</Button>
                 <Button icon="youtube" onClick={addBlockYouTube}>{t('b.youtube')}</Button>
             </Stack>
             <Modal

@@ -3,6 +3,7 @@
   align-items: center;
   justify-content: center;
   appearance: none;
+  display: inline-block;
   
   text-align: center;
   border: 1px solid transparent;
@@ -89,8 +90,8 @@
   display: inline-block;
   vertical-align: middle;
   margin-bottom: 4px;
-  height: 15px;
-  width: 15px;
+  height: 16px;
+  width: 16px;
 
   img, svg {
     display: block;

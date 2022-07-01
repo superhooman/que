@@ -1,0 +1,23 @@
+.root {
+    width: 100%;
+
+    &.center {
+        margin: auto;
+    }
+
+    &[data-size="xs"] {
+        max-width: 360px;
+    }
+
+    &[data-size="sm"] {
+        max-width: 560px;
+    }
+
+    &[data-size="md"] {
+        max-width: 1280px;
+    }
+
+    &[data-size="lg"] {
+        max-width: 1400px;
+    }
+}

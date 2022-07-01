@@ -7,7 +7,7 @@ import { Check } from '../../components/Check';
 import { Input } from '../../components/Input';
 import { Stack } from '../../components/Stack';
 import { Title } from '../../components/Typography';
-import { AuthLayout } from '../../layout/Auth';
+import { SmallLayout } from '../../layout/Small';
 import { withAuth } from '../../middlewares/withAuth';
 import { trpc } from '../../utils/trcp';
 import { useFormik } from 'formik';
@@ -54,7 +54,7 @@ const Create: NextPage = () => {
     }, [mutation.status, router]);
 
     return (
-        <AuthLayout>
+        <SmallLayout>
             <Head>
                 <title>Create a page</title>
             </Head>
@@ -83,7 +83,7 @@ const Create: NextPage = () => {
                     </Button>
                 </Stack>
             </form>
-        </AuthLayout>
+        </SmallLayout>
     );
 };
 

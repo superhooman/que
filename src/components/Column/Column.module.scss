@@ -1,0 +1,12 @@
+.root {
+    position: relative;
+    padding: 0 24px;
+
+    &:not(:last-of-type) {
+        border-right: 1px var(--c-border) solid;
+    }
+
+    &.stretch {
+        min-height: 100vh;
+    }
+}

@@ -1,35 +1,50 @@
 .root {
     min-height: 100%;
-    max-width: 720px;
-    padding: 0 24px;
     margin: auto;
 
     display: flex;
     flex-direction: column;
 
-    .header {
+    .flow {
         display: flex;
+        align-items: flex-start;
+
+        @media screen and (max-width: 720px) {
+            flex-direction: column;
+            align-items: stretch;
+        }
+    }
+
+    .nav {
+        position: sticky;
+        min-width: 100px;
+        padding: 24px;
+        top: 0;
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
         align-items: center;
         justify-content: space-between;
-        padding: 24px 0;
+        border-right: 1px var(--c-border) solid;
+
+        @media screen and (max-width: 720px) {
+            position: static;
+            flex-direction: row;
+            height: unset;
+            width: 100%;
+            padding-bottom: 8px;
+            background-color: var(--c-bg);
+        }
     }
 
     .logo {
         display: block;
         color: var(--c-grey3);
+        width: fit-content;
     }
 
     .main {
         flex-grow: 1;
-        background-color: var(--c-bg);
-        border-radius: var(--base-radius-md);
-        box-shadow: var(--shadow-border);
-        padding: 32px;
-
-        @media screen and (max-width: 520px) {
-            padding: 0;
-            box-shadow: none;
-        }
     }
 
     .footer {

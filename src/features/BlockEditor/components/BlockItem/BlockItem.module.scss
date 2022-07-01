@@ -1,6 +1,5 @@
 .root {
     z-index: 1;
-    touch-action: none;
 
     &.isDragging {
         box-shadow: var(--shadow-sm), var(--shadow-md), var(--shadow-border);

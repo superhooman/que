@@ -1,4 +1,4 @@
-import { EnvelopeClosedIcon } from '@radix-ui/react-icons';
+import { MailIcon } from '@heroicons/react/solid';
 import { useFormik } from 'formik';
 import { GetServerSideProps, NextPage } from 'next';
 import { ClientSafeProvider, getCsrfToken, getProviders, signIn } from 'next-auth/react';
@@ -14,7 +14,7 @@ import { Input } from '../../components/Input';
 import { Slides } from '../../components/Slides';
 import { Stack } from '../../components/Stack';
 import { Paragraph, Text, Title } from '../../components/Typography';
-import { AuthLayout } from '../../layout/Auth';
+import { SmallLayout } from '../../layout/Small';
 import { getToken } from '../../utils/getToken';
 import { emailSchema } from '../../validators/login/email';
 
@@ -59,7 +59,7 @@ const ProviderButton: React.FC<{
     if (provider === 'email') {
         return (
             <Button
-                icon={<EnvelopeClosedIcon />}
+                icon={<MailIcon />}
                 variant="primary"
                 onClick={onClick}
             >
@@ -198,7 +198,7 @@ const DoneSlide: React.FC<DoneSlideProps> = ({
             </div>
             <Stack gap={8} justifyContent="end">
                 <Button onClick={reset} variant="ghost">{t('back')}</Button>
-                <Link href="/">
+                <Link href="/" passHref>
                     <Button>{t('done')}</Button>
                 </Link>
             </Stack>
@@ -224,7 +224,7 @@ const Login: NextPage<Props> = ({ providers, csrfToken, error }) => {
     const errorText = error ? t(error) : undefined;
 
     return (
-        <AuthLayout error={errorText}>
+        <SmallLayout error={errorText}>
             <Head>
                 <title>Sign in</title>
             </Head>
@@ -245,7 +245,7 @@ const Login: NextPage<Props> = ({ providers, csrfToken, error }) => {
                     email={email}
                 />
             </Slides>
-        </AuthLayout>
+        </SmallLayout>
     );
 };
 
