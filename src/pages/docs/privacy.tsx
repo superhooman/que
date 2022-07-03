@@ -1,8 +1,9 @@
 import { GetServerSideProps } from 'next';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
-import { Title, Paragraph } from '../../components/Typography';
-import { HOST } from '../../constants';
-import { DefaultLayout } from '../../layout/Default';
+
+import { Paragraph, Title } from '@src/components/Typography';
+import { HOST } from '@src/constants';
+import { DefaultLayout } from '@src/layout/Default';
 
 const Privacy = () => (
     <DefaultLayout>

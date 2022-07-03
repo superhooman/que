@@ -1,4 +1,4 @@
-import { LogoutIcon, DocumentIcon, UserIcon } from '@heroicons/react/solid';
+import { ExitIcon, FileIcon, PersonIcon } from '@radix-ui/react-icons';
 import { signOut, useSession } from 'next-auth/react';
 import { useTranslation } from 'next-i18next';
 import Link from 'next/link';
@@ -35,7 +35,7 @@ export const UserMenu = () => {
               <Link href="/dashboard/page">
                 <a>
                   <MenuItemWithIcon
-                    icon={<DocumentIcon />}
+                    icon={<FileIcon />}
                   >
                     Page
                   </MenuItemWithIcon>
@@ -45,7 +45,7 @@ export const UserMenu = () => {
               <Link href="/dashboard">
                 <a>
                   <MenuItemWithIcon
-                    icon={<UserIcon />}
+                    icon={<PersonIcon />}
                   >
                     Profile
                   </MenuItemWithIcon>
@@ -54,7 +54,7 @@ export const UserMenu = () => {
             )
           }
           <MenuItemWithIcon
-            icon={<LogoutIcon />}
+            icon={<ExitIcon />}
             onClick={logout}
           >
             Logout

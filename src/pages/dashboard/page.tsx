@@ -1,8 +1,10 @@
-import type { NextPage } from 'next';
 import React from 'react';
-import { withAuth } from '../../middlewares/withAuth';
-import { prisma } from '../../prisma/client';
-import { Page } from '../../typings/page';
+
+import type { NextPage } from 'next';
+
+import { withAuth } from '@src/utils/next/withAuth';
+import { prisma } from '@src/prisma/client';
+import { Page } from '@src/typings/page';
 
 const Default: NextPage = () => <></>;
 

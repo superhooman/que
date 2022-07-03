@@ -1,5 +1,6 @@
 import React from 'react';
 import FocusTrap from 'focus-trap-react';
+
 import cls from './Slides.module.scss';
 
 interface SlidesProps {

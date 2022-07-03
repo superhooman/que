@@ -1,0 +1,35 @@
+.root {
+    position: fixed;
+    right: 8px;
+    bottom: 8px;
+    z-index: 9999;
+
+    pointer-events: none;
+
+    transition: transform var(--a-time-sm) var(--a-ease);
+
+    &.active {
+        pointer-events: auto;
+    }
+
+    .content {
+        display: flex;
+        align-items: center;
+        background: var(--c-bg);
+        padding: 8px;
+        font-size: var(--text-s-sm);
+        box-shadow: var(--shadow-border), var(--shadow-sm);
+        color: var(--c-text);
+        border-radius: var(--base-radius-sm);
+        min-width: 160px;
+        transition: opacity var(--a-time-sm) var(--a-ease),
+            transform var(--a-time-sm) var(--a-ease);
+
+        animation: var(--a-slide-left) var(--a-time-sm) var(--a-slide);
+    }
+
+    &.outro .content {
+        transform: translateX(48px);
+        opacity: 0;
+    }
+}

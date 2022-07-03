@@ -1,5 +1,6 @@
 import React, { ReactNode } from 'react';
 import clsx from 'clsx';
+
 import cls from './Card.module.scss';
 
 export interface Props extends React.HTMLAttributes<HTMLDivElement> {

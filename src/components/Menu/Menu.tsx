@@ -1,9 +1,10 @@
 import * as DropdownMenu from '@radix-ui/react-dropdown-menu';
-import { CheckIcon } from '@heroicons/react/solid';
+import { DotFilledIcon } from '@radix-ui/react-icons';
 import clsx from 'clsx';
 import React, { HTMLAttributes, ReactNode } from 'react';
-import { withClassName } from '../../hocs/withClassName';
-import { Stack } from '../Stack';
+
+import { withClassName } from '@src/utils/hocs/withClassName';
+import { Stack } from '@src/components/Stack';
 
 import cls from './Menu.module.scss';
 
@@ -42,7 +43,7 @@ export const MenuCheckboxItem: React.FC<DropdownMenu.DropdownMenuCheckboxItemPro
     {...props}
   >
     <DropdownMenu.ItemIndicator className={cls.indicator}>
-      <CheckIcon />
+      <DotFilledIcon />
     </DropdownMenu.ItemIndicator>
     {children}
   </DropdownMenu.CheckboxItem>

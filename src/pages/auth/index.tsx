@@ -1,4 +1,4 @@
-import { MailIcon } from '@heroicons/react/solid';
+import { EnvelopeClosedIcon } from '@radix-ui/react-icons';
 import { useFormik } from 'formik';
 import { GetServerSideProps, NextPage } from 'next';
 import { ClientSafeProvider, getCsrfToken, getProviders, signIn } from 'next-auth/react';
@@ -7,16 +7,17 @@ import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import Head from 'next/head';
 import Link from 'next/link';
 import React, { ReactNode } from 'react';
-import { API } from '../../api';
-import { Button } from '../../components/Button';
-import { GoogleIcon } from '../../components/Icon';
-import { Input } from '../../components/Input';
-import { Slides } from '../../components/Slides';
-import { Stack } from '../../components/Stack';
-import { Paragraph, Text, Title } from '../../components/Typography';
-import { SmallLayout } from '../../layout/Small';
-import { getToken } from '../../utils/getToken';
-import { emailSchema } from '../../validators/login/email';
+
+import { API } from '@src/utils/api';
+import { Button } from '@src/components/Button';
+import { GoogleIcon } from '@src/components/Icon';
+import { Input } from '@src/components/Input';
+import { Slides } from '@src/components/Slides';
+import { Stack } from '@src/components/Stack';
+import { Paragraph, Text, Title } from '@src/components/Typography';
+import { SmallLayout } from '@src/layout/Small';
+import { getToken } from '@src/utils/getToken';
+import { emailSchema } from '@src/validators/login/email';
 
 type SignInErrorTypes =
   | 'Signin'
@@ -59,7 +60,7 @@ const ProviderButton: React.FC<{
     if (provider === 'email') {
         return (
             <Button
-                icon={<MailIcon />}
+                icon={<EnvelopeClosedIcon />}
                 variant="primary"
                 onClick={onClick}
             >

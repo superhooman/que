@@ -1,3 +1,4 @@
+import { ModalActions } from '@src/components/Modal';
 import { useFormik } from 'formik';
 import { useTranslation } from 'next-i18next';
 import React from 'react';
@@ -57,10 +58,10 @@ export const TextBlockEditor: React.FC<EditBlockProps<TextBlockData>> = ({ id, i
                     error={touched.text && errors.text && errorsT(errors.text)}
                     {...getFieldProps('text')}
                 />
-                <Stack gap={8} justifyContent="end">
+                <ModalActions>
                     <Button onClick={handleCancel} variant="ghost">{t('cancel')}</Button>
                     <Button type="submit">{t('save')}</Button>
-                </Stack>
+                </ModalActions>
             </Stack>
         </form>
     );

@@ -2,9 +2,9 @@ import NextAuth, { NextAuthOptions } from 'next-auth';
 import { Provider } from 'next-auth/providers';
 import EmailProvider from 'next-auth/providers/email';
 import GoogleProvider from 'next-auth/providers/google';
-
 import { PrismaAdapter } from '@next-auth/prisma-adapter';
-import { prisma } from '../../../prisma/client';
+
+import { prisma } from '@src/prisma/client';
 
 const providers: Provider[] = [];
 

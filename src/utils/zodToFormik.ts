@@ -20,11 +20,6 @@ function createValidationError(e: z.ZodError) {
   return error;
 }
 
-/**
- * Wrap your zod schema in this function when providing it to Formik's validation schema prop
- * @param schema The zod schema
- * @returns An object containing the `validate` method expected by Formik
- */
 export function zodToFormik<T>(
   schema: z.ZodSchema<T>,
   params?: Partial<z.ParseParams>,

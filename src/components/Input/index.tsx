@@ -1,5 +1,7 @@
 import React, { HTMLAttributes, ReactNode, useId } from 'react';
-import { SocialIcon } from '../SocialIcon';
+
+import { SocialIcon } from '@src/components/SocialIcon';
+
 import cls from './Input.module.scss';
 
 interface Props extends HTMLAttributes<HTMLInputElement> {

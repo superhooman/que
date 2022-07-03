@@ -1,6 +1,7 @@
 import clsx from 'clsx';
 import React from 'react';
-import { Size } from '../../typings/size';
+
+import { Size } from '@src/typings/size';
 
 import cls from './Container.module.scss';
 

@@ -1,4 +1,5 @@
-import { LinkIcon } from '@heroicons/react/solid';
+import { Link1Icon } from '@radix-ui/react-icons';
+import { ModalActions } from '@src/components/Modal';
 import { useFormik } from 'formik';
 import { useTranslation } from 'next-i18next';
 import React, { ReactNode } from 'react';
@@ -89,7 +90,7 @@ export const LinkBlockEditor: React.FC<EditBlockProps<LinkBlockData>> = ({ id, i
                 />
                 <Input
                     label={t('url')}
-                    icon={getIconFromUrl(values.url, <LinkIcon />)}
+                    icon={getIconFromUrl(values.url, <Link1Icon />)}
                     error={touched.url && errors.url && errorsT(errors.url)}
                     {...getFieldProps('url')}
                 />
@@ -108,10 +109,10 @@ export const LinkBlockEditor: React.FC<EditBlockProps<LinkBlockData>> = ({ id, i
                     label={t('variant')}
                     value={values.variant || 'default'}
                 />
-                <Stack gap={8} justifyContent="end">
+                <ModalActions>
                     <Button onClick={handleCancel} variant="ghost">{t('cancel')}</Button>
                     <Button type="submit">{t('save')}</Button>
-                </Stack>
+                </ModalActions>
             </Stack>
         </form>
     );

@@ -1,7 +1,7 @@
 import { GetServerSideProps, GetServerSidePropsContext, GetServerSidePropsResult, PreviewData } from 'next';
 import { JWT } from 'next-auth/jwt';
 import { ParsedUrlQuery } from 'querystring';
-import { getToken } from '../utils/getToken';
+import { getToken } from '../getToken';
 
 type Handler<
     P extends { [key: string]: any } = { [key: string]: any },

@@ -1,6 +1,7 @@
 import { useTranslation } from 'next-i18next';
 import Link from 'next/link';
 import React from 'react';
+import toast from 'react-hot-toast';
 import { Button } from '../../components/Button';
 import { Column } from '../../components/Column';
 import { Container } from '../../components/Container';
@@ -22,14 +23,21 @@ interface Props {
 export const PageEditor: React.FC<Props> = ({ page }) => {
     const { t } = useTranslation('common');
     const [data, setData] = React.useState(page.blocks || []);
-    const { mutate, isLoading } = trpc.useMutation(['page.update']);
+    const { mutateAsync, isLoading } = trpc.useMutation(['page.update']);
 
     const save = React.useCallback(() => {
-        mutate({
-            slug: page.slug,
-            blocks: data,
-        });
-    }, [data, page.slug, mutate]);
+        toast.promise(
+            mutateAsync({
+                slug: page.slug,
+                blocks: data,
+            }),
+            {
+                loading: t('saving'),
+                success: t('saved'),
+                error: t('not.saved'),
+            }
+        );
+    }, [data, page.slug, mutateAsync, t]);
 
     return (
         <Screens

@@ -1,5 +1,6 @@
 import clsx from 'clsx';
 import React, { CSSProperties, HTMLAttributes } from 'react';
+
 import cls from './Stack.module.scss';
 
 interface Props extends HTMLAttributes<HTMLDivElement> {

@@ -1,3 +1,4 @@
+import { ModalActions } from '@src/components/Modal';
 import clsx from 'clsx';
 import { useFormik } from 'formik';
 import { useTranslation } from 'next-i18next';
@@ -58,10 +59,10 @@ export const YouTubeBlockEditor: React.FC<EditBlockProps<YouTubeBlockData>> = ({
                     error={touched.url && errors.url && errorsT(errors.url)}
                     {...getFieldProps('url')}
                 />
-                <Stack gap={8} justifyContent="end">
+                <ModalActions>
                     <Button onClick={handleCancel} variant="ghost">{t('cancel')}</Button>
                     <Button type="submit">{t('save')}</Button>
-                </Stack>
+                </ModalActions>
             </Stack>
         </form>
     );

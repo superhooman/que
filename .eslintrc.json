@@ -1,8 +1,48 @@
 {
   "extends": "next/core-web-vitals",
+  "plugins": [
+    "no-relative-import-paths"
+  ],
   "rules": {
-    "quotes": ["error", "single"],
-    "semi": ["error", "always"],
-    "eol-last": ["error", "always"]
+    "quotes": [
+      "error",
+      "single"
+    ],
+    "semi": [
+      "error",
+      "always"
+    ],
+    "eol-last": [
+      "error",
+      "always"
+    ],
+    "no-relative-import-paths/no-relative-import-paths": [
+      "warn",
+      {
+        "allowSameFolder": true
+      }
+    ],
+    "import/order": [
+      "warn",
+      {
+        "pathGroups": [
+          {
+            "pattern": "**/*.scss",
+            "group": "index",
+            "position": "after"
+          }
+        ],
+        "groups": [
+          "builtin",
+          "external",
+          "type",
+          "internal",
+          ["sibling", "parent"],
+          "index",
+          "object"
+        ],
+        "newlines-between": "always"
+      }
+    ]
   }
 }

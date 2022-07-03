@@ -2,12 +2,13 @@ import { signOut } from 'next-auth/react';
 import { useRouter } from 'next/router';
 import React from 'react';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
-import { Loader } from '../../components/Loader';
-import { Stack } from '../../components/Stack';
-import { Paragraph } from '../../components/Typography';
-import { SmallLayout } from '../../layout/Small';
-import { withAuth } from '../../middlewares/withAuth';
 import { useTranslation } from 'next-i18next';
+
+import { Loader } from '@src/components/Loader';
+import { Stack } from '@src/components/Stack';
+import { Paragraph } from '@src/components/Typography';
+import { SmallLayout } from '@src/layout/Small';
+import { withAuth } from '@src/utils/next/withAuth';
 
 const Logout = () => {
     const router = useRouter();

@@ -1,8 +1,9 @@
 import React, { HTMLAttributes } from 'react';
 import clsx from 'clsx';
 
+import { Size } from '@src/typings/size';
+
 import cls from './Typography.module.scss';
-import { Size } from '../../typings/size';
 
 interface GenericTextProps {
     font?: number;

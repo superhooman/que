@@ -1,14 +1,15 @@
 import { GetServerSideProps, NextPage } from 'next';
 import Head from 'next/head';
-import { Avatar } from '../components/Avatar';
-import { Loader } from '../components/Loader';
-import { Space } from '../components/Space';
-import { Stack } from '../components/Stack';
-import { Paragraph, Text, Title } from '../components/Typography';
-import { BlockRenderer } from '../features/BlockRenderer';
-import { PageLayout } from '../layout/Page';
-import { prisma } from '../prisma/client';
-import { PageWithUser } from '../typings/page';
+
+import { Avatar } from '@src/components/Avatar';
+import { Loader } from '@src/components/Loader';
+import { Space } from '@src/components/Space';
+import { Stack } from '@src/components/Stack';
+import { Paragraph, Text, Title } from '@src/components/Typography';
+import { BlockRenderer } from '@src/features/BlockRenderer';
+import { PageLayout } from '@src/layout/Page';
+import { prisma } from '@src/prisma/client';
+import { PageWithUser } from '@src/typings/page';
 
 interface Props {
     page: PageWithUser;

@@ -1,6 +1,8 @@
-import { CheckIcon, XIcon } from '@heroicons/react/solid';
+import { CheckIcon, Cross1Icon } from '@radix-ui/react-icons';
 import clsx from 'clsx';
-import { Loader } from '../Loader';
+
+import { Loader } from '@src/components/Loader';
+
 import cls from './Check.module.scss';
 
 interface Props {
@@ -21,7 +23,7 @@ export const Check: React.FC<Props> = ({ value, loading }) => {
             {value ? (
                 <CheckIcon />
             ) : (
-                <XIcon />
+                <Cross1Icon />
             )}
         </div>
     );

@@ -1,13 +1,14 @@
-import { HeartIcon } from '@heroicons/react/solid';
+import { HeartIcon } from '@radix-ui/react-icons';
 import { GetServerSideProps, NextPage } from 'next';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import Head from 'next/head';
 import Image from 'next/image';
 import Link from 'next/link';
-import { Button } from '../components/Button';
-import { Space } from '../components/Space';
-import { Paragraph, Title } from '../components/Typography';
-import { LandingLayout } from '../layout/Landing';
+
+import { Button } from '@src/components/Button';
+import { Space } from '@src/components/Space';
+import { Paragraph, Title } from '@src/components/Typography';
+import { LandingLayout } from '@src/layout/Landing';
 
 const Index: NextPage = () => (
   <LandingLayout>

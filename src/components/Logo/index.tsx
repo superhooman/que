@@ -1,4 +1,5 @@
 import clsx from 'clsx';
+
 import cls from './Logo.module.scss';
 
 export const Logo: React.FC<{ size?: number } & React.SVGProps<SVGSVGElement>> = ({ size = 36, className, ...props }) => (

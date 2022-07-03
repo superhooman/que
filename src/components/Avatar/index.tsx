@@ -1,10 +1,12 @@
 import React, { HTMLAttributes } from 'react';
-import * as AvatarBase from '@radix-ui/react-avatar';
-import cls from './Avatar.module.scss';
 import clsx from 'clsx';
-import { Loader } from '../Loader';
-import { Size } from '../../typings/size';
-import { UserIcon } from '@heroicons/react/solid';
+import * as AvatarBase from '@radix-ui/react-avatar';
+import { PersonIcon } from '@radix-ui/react-icons';
+
+import { Loader } from '@src/components/Loader';
+import { Size } from '@src/typings/size';
+
+import cls from './Avatar.module.scss';
 
 export interface AvatarProps extends HTMLAttributes<HTMLSpanElement> {
   image?: string;
@@ -38,7 +40,7 @@ export const Avatar = React.forwardRef<HTMLSpanElement, AvatarProps>(
             delayMs={600}
             className={cls.fallback}
           >
-            {name ? getInitials(name) : <UserIcon />}
+            {name ? getInitials(name) : <PersonIcon />}
           </AvatarBase.AvatarFallback>
         </>
       )}

@@ -1,6 +1,7 @@
 import { NextPage } from 'next';
-import { Paragraph, Title } from '../components/Typography';
-import { SmallLayout } from '../layout/Small';
+
+import { Paragraph, Title } from '@src/components/Typography';
+import { SmallLayout } from '@src/layout/Small';
 
 interface Props {
     statusCode?: number;

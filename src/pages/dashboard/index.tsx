@@ -1,13 +1,15 @@
-import type { NextPage } from 'next';
 import React from 'react';
-import { trpc } from '../../utils/trcp';
-import { withAuth } from '../../middlewares/withAuth';
-import { prisma } from '../../prisma/client';
-import { DashboardLayout } from '../../layout/Dashboard';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
-import { Page } from '../../typings/page';
 import Head from 'next/head';
-import { PageEditor } from '../../features/PageEditor';
+
+import type { NextPage } from 'next';
+
+import { trpc } from '@src/utils/trcp';
+import { withAuth } from '@src/utils/next/withAuth';
+import { prisma } from '@src/prisma/client';
+import { DashboardLayout } from '@src/layout/Dashboard';
+import { Page } from '@src/typings/page';
+import { PageEditor } from '@src/features/PageEditor';
 
 interface Props {
   page: Page;

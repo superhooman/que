@@ -2,21 +2,23 @@ import React from 'react';
 import { NextPage } from 'next';
 import { useTranslation } from 'next-i18next';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
-import { Button } from '../../components/Button';
-import { Check } from '../../components/Check';
-import { Input } from '../../components/Input';
-import { Stack } from '../../components/Stack';
-import { Title } from '../../components/Typography';
-import { SmallLayout } from '../../layout/Small';
-import { withAuth } from '../../middlewares/withAuth';
-import { trpc } from '../../utils/trcp';
 import { useFormik } from 'formik';
-import { createPageSchema } from '../../validators/page/create';
-import { zodToFormik } from '../../utils/zodToFormik';
-import { prisma } from '../../prisma/client';
 import { useRouter } from 'next/router';
-import { HOST } from '../../constants';
 import Head from 'next/head';
+
+import { Button } from '@src/components/Button';
+import { Check } from '@src/components/Check';
+import { Input } from '@src/components/Input';
+import { Stack } from '@src/components/Stack';
+import { Title } from '@src/components/Typography';
+import { SmallLayout } from '@src/layout/Small';
+import { withAuth } from '@src/utils/next/withAuth';
+import { trpc } from '@src/utils/trcp';
+import { createPageSchema } from '@src/validators/page/create';
+import { zodToFormik } from '@src/utils/zodToFormik';
+import { prisma } from '@src/prisma/client';
+import { HOST } from '@src/constants';
+
 
 const Create: NextPage = () => {
     const router = useRouter();

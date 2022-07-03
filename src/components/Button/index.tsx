@@ -1,9 +1,10 @@
 import React, { HTMLAttributes, ReactNode } from 'react';
 import clsx from 'clsx';
-import { Loader } from '../Loader';
+
+import { Loader } from '@src/components/Loader';
+import { SocialIcon } from '@src/components/SocialIcon';
 
 import cls from './Button.module.scss';
-import { SocialIcon } from '../SocialIcon';
 
 interface Props extends HTMLAttributes<HTMLElement> {
   variant?: 'default' | 'primary' | 'ghost';

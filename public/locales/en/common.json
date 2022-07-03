@@ -19,5 +19,8 @@
     "open": "Open",
     "button.default": "Default",
     "button.primary": "Primary",
-    "variant": "Variant"
+    "variant": "Variant",
+    "saving": "Saving",
+    "saved": "Saved",
+    "not.saved": "Could not save"
 }
