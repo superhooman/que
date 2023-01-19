@@ -4,6 +4,10 @@ const { i18n } = require('./next-i18next.config');
 const nextConfig = {
   reactStrictMode: true,
   i18n,
+  env: {
+	PROD_URL: process.env.PROD_URL,
+	NODE_ENV: process.env.NODE_ENV,
+  },
   rewrites() {
     return [
 	    {
